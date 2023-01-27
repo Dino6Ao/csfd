@@ -22,7 +22,7 @@ csfd_id, název filmu, rok vzniku, datum hodnocení, hodnocení samotné
 csfd_id,název filmu, rok vzniku, datum hodnocení, hodnocení samotné, komentář  
 
 
-EN
+EN  
 1, Download ratings in .csv:  
 csfd_id, name of the movie, year it was made, date when rated, rating itself  
 
