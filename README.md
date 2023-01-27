@@ -8,6 +8,7 @@ Otestováno / Tested:
 
 ## Jak spustit / How to run
 python csfd.py user_id, ie. python csfd.py 61731  
+
 User ID najdete v URL na vašem profilu / User ID can be found in the URL of the profile, ie mine:  
 https://www.csfd.cz/uzivatel/61731-barak/prehled/ 
     
