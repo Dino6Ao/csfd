@@ -6,6 +6,10 @@ Otestováno / Tested:
   - Python 3.6, 3.11
   - Windows 10, Red Hat 6  
 
+## Co skript dělá / Purpose of the script
+Stáhne hodnocení/recenze uživatele z webu csfd.cz do formátu .csv, se kterým pak můžete dále pracovat např. v Excelu / Script downloads ratings/comments of the csfd.cz user to .csv format, which can be then opened in ie. Excel and worked with further  
+
+
 ## Jak spustit / How to run
 python csfd.py user_id, ie. python csfd.py 61731  
 
@@ -30,8 +34,6 @@ csfd_id, name of the movie, year it was made, date when rated, rating itself
 2, Download reviews in .csv:  
 csfd_id, name of the movie, year it was made, date when rated, rating itself, comment  
 
-  
-.csv pak můžete otevřít např. v Excelu / .csv can be then opened in ie. Excel  
 
 
 ## Note  
