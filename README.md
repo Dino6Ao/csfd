@@ -14,17 +14,17 @@ https://www.csfd.cz/uzivatel/61731-barak/prehled/
     
 Dále pak postupujte podle možností v menu, ktere je v češtině / Just follow the options in the menu, which is in Czech language due the majority of Czech speaking users  
 ## Možnosti / Options
-1, Stáhne hodnocení ve formátu .csv:
-csfd_id, název filmu, rok vzniku, datum hodnocení, hodnocení samotné
+1, Stáhne hodnocení ve formátu .csv:  
+csfd_id, název filmu, rok vzniku, datum hodnocení, hodnocení samotné  
 
-2, Stáhne recenze ve formátu .csv:
-csfd_id,název filmu, rok vzniku, datum hodnocení, hodnocení samotné, komentář
+2, Stáhne recenze ve formátu .csv:  
+csfd_id,název filmu, rok vzniku, datum hodnocení, hodnocení samotné, komentář  
 
 
-1, Download ratings in .csv:
-csfd_id, name of the movie, year it was made, date when rated, rating itself
+1, Download ratings in .csv:  
+csfd_id, name of the movie, year it was made, date when rated, rating itself  
 
-2, Download reviews in .csv:
+2, Download reviews in .csv:  
 csfd_id, name of the movie, year it was made, date when rated, rating itself, comment  
 
 .csv pak můžete otevřít např. v Excelu / .csv can be then opened in ie. Excel  
