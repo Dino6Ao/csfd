@@ -39,7 +39,7 @@ Just follow the options in the menu, which is in Czech language due to majority 
 csfd_id, název filmu, rok vzniku, datum hodnocení, hodnocení samotné  
 
 2, Stáhne recenze ve formátu .csv:  
-csfd_id,název filmu, rok vzniku, datum hodnocení, hodnocení samotné, komentář  
+csfd_id, název filmu, rok vzniku, datum hodnocení, hodnocení samotné, komentář  
 
 
 ### EN  
