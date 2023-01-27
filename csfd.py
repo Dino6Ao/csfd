@@ -139,5 +139,5 @@ while loop:
       print("Exiting... bye!")
       sys.exit()
   else:
-      input('Spatne! Zmackni jakoukoli klavesu pro pokracovani...')
+      input('Spatne! Zmackni enter pro pokracovani...')
       print(48 * '=')
