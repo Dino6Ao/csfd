@@ -8,11 +8,11 @@ Otestováno / Tested:
 
 ## Co skript dělá / Purpose
 ### CZ  
-Stáhne hodnocení/recenze uživatele z webu csfd.cz do formátu .csv, se kterým pak můžete dále pracovat např. v Excelu a importovat výsledek do dalších databází (IMDB, Letterboxd, Trakt...)  
+Stáhne hodnocení/recenze uživatele z webu csfd.cz do formátu .csv, se kterým pak můžete dále pracovat např. v Excelu a importovat výsledek do dalších databází (IMDb, Letterboxd, Trakt...)  
 
 
 ### EN 
-Script downloads ratings/comments of the csfd.cz user to .csv format, which can be then opened in ie. Excel and worked with further to import the list to other databases (IMDB, Letterboxd, Trakt...)  
+Script downloads ratings/comments of the csfd.cz user to .csv format, which can be then opened in ie. Excel and worked with further to import the list to other databases (IMDb, Letterboxd, Trakt...)  
 
 
 ## Jak spustit / How to run
