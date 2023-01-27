@@ -52,4 +52,4 @@ csfd_id, name of the movie, year it was made, date when rated, rating itself, co
 
 
 ## Note  
-V případě zájmu je možno rozšířit a přidat funkce / In case of interest, further options can be added  
+V případě zájmu je možno rozšířit a přidat další funkce / In case of interest, further options can be added  
