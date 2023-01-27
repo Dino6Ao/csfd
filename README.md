@@ -7,18 +7,31 @@ Otestováno / Tested:
   - Windows 10, Red Hat 6  
 
 ## Co skript dělá / Purpose
+### CZ  
 Stáhne hodnocení/recenze uživatele z webu csfd.cz do formátu .csv, se kterým pak můžete dále pracovat např. v Excelu a importovat výsledek do dalších databází (IMDB, Letterboxd, Trakt...)  
 
+
+### EN 
 Script downloads ratings/comments of the csfd.cz user to .csv format, which can be then opened in ie. Excel and worked with further to import the list to other databases (IMDB, Letterboxd, Trakt...)  
 
 
 ## Jak spustit / How to run
-python csfd.py user_id, ie. python csfd.py 95  
+### CZ 
+python csfd.py user_id, např. python csfd.py 95  
 
-User ID (číslo) najdete v URL na profilu uživatele, např. uživatel 'golfista' ma ID 95 / User ID (number) can be found in the URL of the profile, ie. user 'golfista' has ID 95    
+User ID (číslo) najdete v URL na profilu uživatele, např. uživatel 'golfista' ma ID 95  
 https://www.csfd.cz/uzivatel/95-golfista/prehled/
     
-Dále pak postupujte podle možností v menu, ktere je v češtině / Just follow the options in the menu, which is in Czech language due to majority of Czech speaking users  
+Dále pak postupujte podle možností v menu, ktere je v češtině   
+
+
+### EN 
+python csfd.py user_id, ie. python csfd.py 95  
+
+User ID (number) can be found in the URL of the profile, ie. user 'golfista' has ID 95    
+https://www.csfd.cz/uzivatel/95-golfista/prehled/
+
+Just follow the options in the menu, which is in Czech language due to majority of Czech speaking users 
 
 ## Možnosti / Options
 ### CZ  
