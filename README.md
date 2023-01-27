@@ -7,10 +7,10 @@ Otestováno / Tested:
   - Windows 10, Red Hat 6
 
 ## Jak spustit / How to run
-python csfd.py <user id>, ie. python csfd.py 61731
-User ID najdete v URL na vašem profilu / User ID can be found in the URL of the profile, ie mine:
+python csfd.py <user id>, ie. python csfd.py 61731  
+User ID najdete v URL na vašem profilu / User ID can be found in the URL of the profile, ie mine:  
 https://www.csfd.cz/uzivatel/61731-barak/prehled/ 
     
-Dále pak postupujte podle možností v menu / Just follow the options in the menu
+Dále pak postupujte podle možností v menu / Just follow the options in the menu  
 
-NOTE: V případě zájmu je možno rozšírit a přidat funkce / In case of interest, further options can be added
+NOTE: V případě zájmu je možno rozšírit a přidat funkce / In case of interest, further options can be added  
