@@ -12,7 +12,7 @@ python csfd.py user_id, ie. python csfd.py 61731
 User ID (číslo) najdete v URL na profilu uživatele, např. moje / User ID (number) can be found in the URL of the profile, ie. mine  
 https://www.csfd.cz/uzivatel/61731-barak/prehled/  
     
-Dále pak postupujte podle možností v menu, ktere je v češtině / Just follow the options in the menu, which is in Czech language due the majority of Czech speaking users  
+Dále pak postupujte podle možností v menu, ktere je v češtině / Just follow the options in the menu, which is in Czech language due to majority of Czech speaking users  
 
 ## Možnosti / Options
 CZ  
@@ -30,10 +30,9 @@ csfd_id, name of the movie, year it was made, date when rated, rating itself
 2, Download reviews in .csv:  
 csfd_id, name of the movie, year it was made, date when rated, rating itself, comment  
 
-
   
 .csv pak můžete otevřít např. v Excelu / .csv can be then opened in ie. Excel  
 
 
-  
-NOTE: V případě zájmu je možno rozšířit a přidat funkce / In case of interest, further options can be added  
+## Note  
+V případě zájmu je možno rozšířit a přidat funkce / In case of interest, further options can be added  
