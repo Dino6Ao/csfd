@@ -15,7 +15,7 @@ Script downloads ratings/comments of the csfd.cz user to .csv format, which can 
 ## Jak spustit / How to run
 python csfd.py user_id, ie. python csfd.py 95  
 
-User ID (číslo) najdete v URL na profilu uživatele, např. uživatel 'golfista' / User ID (number) can be found in the URL of the profile, ie. user 'golfista'  
+User ID (číslo) najdete v URL na profilu uživatele, např. uživatel 'golfista' ma ID 95 / User ID (number) can be found in the URL of the profile, ie. user 'golfista' has ID 95    
 https://www.csfd.cz/uzivatel/95-golfista/prehled/
     
 Dále pak postupujte podle možností v menu, ktere je v češtině / Just follow the options in the menu, which is in Czech language due to majority of Czech speaking users  
