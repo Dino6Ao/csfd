@@ -30,7 +30,9 @@ csfd_id, name of the movie, year it was made, date when rated, rating itself
 csfd_id, name of the movie, year it was made, date when rated, rating itself, comment  
 
 
+  
 .csv pak můžete otevřít např. v Excelu / .csv can be then opened in ie. Excel  
 
 
+  
 NOTE: V případě zájmu je možno rozšířit a přidat funkce / In case of interest, further options can be added  
