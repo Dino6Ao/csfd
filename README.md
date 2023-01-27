@@ -6,7 +6,7 @@ Otestováno / Tested:
   - Python 3.6, 3.11
   - Windows 10, Red Hat 6  
 
-## Co skript dělá / Purpose of the script
+## Co skript dělá / Purpose
 Stáhne hodnocení/recenze uživatele z webu csfd.cz do formátu .csv, se kterým pak můžete dále pracovat např. v Excelu / Script downloads ratings/comments of the csfd.cz user to .csv format, which can be then opened in ie. Excel and worked with further  
 
 
