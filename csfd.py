@@ -9,7 +9,7 @@ from pathlib import Path
 
 
 if os.path.exists('csfd_cookie.txt'):
-  csfd_cookie = Path('csfd_cookie.txt').read_text()
+  csfd_cookie = Path('csfd_cookie.txt').read_text().strip('\n')
 else:
   csfd_cookie = ''
 
