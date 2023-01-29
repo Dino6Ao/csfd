@@ -4,17 +4,27 @@ import re
 import sys
 import math
 import csv
+import os.path
+from pathlib import Path
+
+
+if os.path.exists('csfd_cookie.txt'):
+  csfd_cookie = Path('csfd_cookie.txt').read_text()
+else:
+  csfd_cookie = ''
 
 payload = {'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5)\
             AppleWebKit/537.36 (KHTML, like Gecko) Cafari/537.36',
-          }
-          
+            'cookie': csfd_cookie,
+          }  
+        
 user_id = (sys.argv[1])
 user_url = (f'https://www.csfd.cz/uzivatel/{user_id}')
 grab = requests.get(user_url, headers=payload)
 soup = BeautifulSoup(grab.text, 'html.parser')
 user_name = soup.find('title')
 nbsp = u'\xa0'
+
 
 def get_csfd_ratings():
   rating_url = (f'https://www.csfd.cz/uzivatel/{user_id}/hodnoceni/')
@@ -54,7 +64,7 @@ def get_csfd_ratings():
         else:
           rating = '0'
         
-        f.write(a['href'].split('/film/')[1].split('-')[0] + ',"' + name + '",' + year.replace('(','').replace(')','') + ',' + date.replace('\n','').replace('\t','') + ',' + rating + '\n')
+        f.write(a['href'].split('/film/')[1].split('-')[0] + ';\"' + name + '\";' + year.replace('(','').replace(')','') + ';' + date.replace('\n','').replace('\t','') + ';' + rating + '\n')
 
   f.close()
     
@@ -105,7 +115,7 @@ def get_csfd_reviews():
         except IndexError:
           rating = 'n/a'
         
-        f.write(a['href'].split('/film/')[1].split('-')[0] + ',"' + name + '",' + year.replace('(','').replace(')','') + ',' + date.replace('\n','').replace('\t','') + ',' + rating + ',"' + review.replace('\n','').replace('\t','') + '"\n')
+        f.write(a['href'].split('/film/')[1].split('-')[0] + ';\"' + name + '\";' + year.replace('(','').replace(')','') + ';' + date.replace('\n','').replace('\t','') + ';' + rating + ';\"' + review.replace('\n','').replace('\t','') + '\"\n')
 
   f.close()
     
@@ -130,14 +140,14 @@ while loop:
   choice = input("Vyber [1-3]: ")
    
   if choice == '1':     
-    print('...... vytvarim csfd_ratings.csv')
+    print('...... vytvarim soubor csfd_ratings.csv')
     get_csfd_ratings()
   elif choice == '2':
-    print('...... vytvarim csfd_reviews.csv')
+    print('...... vytvarim soubor csfd_reviews.csv')
     get_csfd_reviews()
   elif choice == '3':
       print("Exiting... bye!")
       sys.exit()
   else:
-      input('Spatne! Zmackni enter pro pokracovani...')
+      input('Spatne! Zmackni enter pro pokracovani... ')
       print(48 * '=')
