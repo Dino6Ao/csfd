@@ -2,7 +2,7 @@
 Skripty na CSFD.cz (Česko-slovenskou filmovou databázi) / Scripts related to CSFD.cz (Czech-Slovak movie database)
 
 Otestováno / Tested:
-  - CSFD ke dni 27 ledna 2023 / CSFD on 27 January 2023
+  - CSFD ke dni 29 ledna 2023 / CSFD on 29 January 2023
   - Python 3.6, 3.11
   - Windows 10, Red Hat 6  
 
@@ -36,20 +36,22 @@ Just follow the options in the menu, which is in Czech language due to majority 
 ## Možnosti / Options
 ### CZ  
 1, Stáhne hodnocení ve formátu .csv:  
-csfd_id, název filmu, rok vzniku, datum hodnocení, hodnocení samotné  
+csfd_id; název filmu; rok vzniku; datum hodnocení; hodnocení samotné  
 
 2, Stáhne recenze ve formátu .csv:  
-csfd_id, název filmu, rok vzniku, datum hodnocení, hodnocení samotné, komentář  
+csfd_id; název filmu; rok vzniku; datum hodnocení; hodnocení samotné; komentář  
+
+Defaultně CSFD zobrazuje názvy filmů v češtině. Pokud chcete data exportovat v jiném jazyce, je nedříve potřeba toto nastavení po příhlášení v prohlížeči přepnout ve Vašem profilu (Profil -> Nastavení -> Zobrazení -> Priorita názvů filmů) a poté zkopírovat 'permanent_login_token' do souboru csfd_cookie.txt. Tento token se vygeneruje s omezenou platností ve formě cookies po trvalém přihlášení. Návod na jeho nalezení např. zde https://learn.microsoft.com/cs-cz/microsoft-edge/devtools-guide-chromium/storage/cookies Pokud chcete data exportovat v češtině, tento krok můžete ignorovat.
 
 
 ### EN  
 1, Download ratings in .csv:  
-csfd_id, name of the movie, year it was made, date when rated, rating itself  
+csfd_id; name of the movie; year it was made; date when rated; rating itself  
 
 2, Download reviews in .csv:  
-csfd_id, name of the movie, year it was made, date when rated, rating itself, comment  
+csfd_id; name of the movie; year it was made; date when rated; rating itself; comment  
 
-
+By default, CSFD shows the movie titles in Czech. If you want to export the data in a different language, you first need to login with your browser and change those settings in your profile (Profile -> Settings -> View -> Priority of the movie titles) and then copy the 'permanent_login_token' into the file csfd_cookie.txt. This token is generated with limited validity in a form of a cookie after the permanent login. Guide how to extract it can be found ie. here https://learn.microsoft.com/en-us/microsoft-edge/devtools-guide-chromium/storage/cookies If you want to export the data in Czech language, you can ignore this step.  
 
 ## Note  
 V případě zájmu je možno rozšířit a přidat další funkce / In case of interest, further options can be added  
