@@ -54,4 +54,8 @@ csfd_id; name of the movie; year it was made; date when rated; rating itself; co
 By default, CSFD shows the movie titles in Czech. If you want to export the data in a different language, you first need to login with your browser and change those settings in your profile (Profile -> Settings -> View -> Priority of the movie titles) and then copy the 'permanent_login_token' into the file csfd_cookie.txt. This token is generated with limited validity in a form of a cookie after the permanent login. Guide how to extract it can be found ie. here https://learn.microsoft.com/en-us/microsoft-edge/devtools-guide-chromium/storage/cookies If you want to export the data in Czech language, you can ignore this step.  
 
 ## Note  
-V případě zájmu je možno rozšířit a přidat další funkce / In case of interest, further options can be added  
+V případě zájmu je možno rozšířit a přidat další funkce / In case of interest, further options can be added
+
+I have a day job, so this is really optional. If you think that any benefit you obtained here is worth some money and you are willing to pay for it, feel free to send any amount through PayPal
+
+[![](https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif)](https://www.paypal.com/donate/?hosted_button_id=QQCS64WL9MJV6)
