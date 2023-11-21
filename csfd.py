@@ -13,10 +13,15 @@ if os.path.exists('csfd_cookie.txt'):
 else:
   csfd_cookie = ''
 
+if os.path.exists('imdb_cookie.txt'):
+  imdb_cookie = Path('imdb_cookie.txt', encoding='latin-1').read_text().replace('\n', '').strip()
+else:
+  imdb_cookie = ''
+
 payload = {'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5)\
             AppleWebKit/537.36 (KHTML, like Gecko) Cafari/537.36',
             'cookie': csfd_cookie,
-          }  
+          }
         
 user_id = (sys.argv[1])
 user_url = (f'https://www.csfd.cz/uzivatel/{user_id}')
@@ -115,7 +120,7 @@ def get_csfd_reviews():
         except IndexError:
           rating = 'n/a'
         
-        f.write(a['href'].split('/film/')[1].split('-')[0] + ';\"' + name + '\";' + year.replace('(','').replace(')','') + ';' + date.replace('\n','').replace('\t','') + ';' + rating + ';\"' + review.replace('\n','').replace('\t','') + '\"\n')
+        f.write(a['href'].split('/film/')[1].split('-')[0] + ';\"' + name + '\";' + year.replace('(','').replace(')','') + ';' + date.replace('\n','').replace('\t','') + ';' + rating + ';\"' + review.replace('\n','').replace('\t','').replace(';',',') + '\"\n')
 
   f.close()
     
@@ -124,20 +129,166 @@ def get_csfd_reviews():
   print(f"Nalezeno {num_lines_csfd} recenzi") 
   print(32 * "=")    
 
+def get_imdb_links():
+  with open('csfd_ratings.csv', encoding="utf8") as movies:
+    links = movies.read().splitlines()
+    
+  f = open("csfd_imdb_links.csv", "w+")
+  fl = open("csfd_no_imdb_link.csv", "w+")
+  
+  for csfd in links:
+    csfd_link = csfd.split(';')[0]
+    urls = (f'https://www.csfd.cz/film/{csfd_link}')
+    grab = requests.get(urls, headers=payload)
+    soup = BeautifulSoup(grab.text, 'html.parser')
+    
+    csfd_rating = soup.select_one('a[href="#close-dropdown"]')['data-rating']
+    imdb_link = soup.select_one('a.button.button-big.button-imdb')['href']
+    
+    if csfd_rating and imdb_link:
+      f.write(csfd.split(';')[0] + "," + imdb_link.split('/title/tt')[1].split('/')[0] + "," + csfd_rating + "\n")
+    else:
+      fl.write(csfd.split(';')[0] + "," + na + "," + csfd_rating + "\n")
+      
+  f.close()
+  fl.close()
+    
+  print(32 * "-")
+  num_lines_imdb = sum(1 for line in open('csfd_imdb_links.csv', encoding = "utf-8"))
+  num_lines_imdb_fl = sum(1 for line in open('csfd_no_imdb_link.csv', encoding = "utf-8"))
+  print(f"Nalezeno {num_lines_imdb} linku") 
+  print(f"Nenalezeno {num_lines_imdb_fl} linku") 
+  print(32 * "=")  
+
+def rate_imdb():
+  with open('csfd_imdb_links.csv') as imdb:
+    filmy = imdb.read().splitlines()
+  
+  f = open("imdb_fail.csv", "w+")
+  suc = 0
+    
+  for film in filmy:
+    rating_csfd = (film.split(','))[2]
+    csfd_int = (int(rating_csfd))
+    decimal = (int(10))
+    rating_imdb = (int(csfd_int / decimal))
+    imdb_id = (film.split(','))[1]
+    
+    req_body = { 'query': 'mutation UpdateTitleRating($rating: Int!, $titleId: ID!) { rateTitle(input: {rating: $rating, titleId: $titleId}) { rating { value __typename } __typename }}',
+      'operationName': 'UpdateTitleRating',
+      'variables': {
+          'rating': rating_imdb,
+          'titleId': "tt" + imdb_id
+      }
+    }
+    headers = {
+      "content-type": "application/json",
+      "cookie": imdb_cookie
+    }
+
+    resp = requests.post("https://api.graphql.imdb.com/", json=req_body, headers=headers)
+  
+    soup = BeautifulSoup(resp.text, 'html.parser')
+
+    if resp.status_code != 200:
+      if resp.status_code == 429:
+        f.write(film + ",IMDb Rate limit exceeded" + "\n")
+        sleep(1)
+      else:
+        f.write(film + "," + resp.status_code + "\n")
+        break
+
+    json_resp = resp.json()
+    
+    if 'errors' in json_resp and len(json_resp['errors']) > 0:
+      first_error_msg = json_resp['errors'][0]['message']
+
+      if 'Authentication' in first_error_msg:
+        print(f"Neplatna IMDb cookie")
+        exit(1)
+      else:
+        f.write(film + "," + first_error_msg + "\n")
+    else:
+      suc += 1
+          
+  f.close()
+  
+  print(32 * "-")
+  num_lines_imdb = sum(1 for line in open('csfd_imdb_links.csv', encoding = "utf-8"))
+  num_lines_imdb_fl = sum(1 for line in open('imdb_fail.csv', encoding = "utf-8"))
+  print(f"Nalezeno celkem {num_lines_imdb} filmu")
+  print(f"Hodnoceno {suc} filmu") 
+  print(f"Nehodnoceno {num_lines_imdb_fl} filmu, viz imdb_fail.csv") 
+  print(32 * "=")  
+
+def rate_fail_imdb():
+  with open('imdb_fail.csv') as imdb:
+    filmy = imdb.read().splitlines()
+    
+  suc = 0
+    
+  for film in filmy:
+    rating_csfd = (film.split(','))[2]
+    csfd_int = (int(rating_csfd))
+    decimal = (int(10))
+    rating_imdb = (int(csfd_int / decimal))
+    imdb_id = (film.split(','))[1]
+    
+    req_body = { 'query': 'mutation UpdateTitleRating($rating: Int!, $titleId: ID!) { rateTitle(input: {rating: $rating, titleId: $titleId}) { rating { value __typename } __typename }}',
+      'operationName': 'UpdateTitleRating',
+      'variables': {
+          'rating': rating_imdb,
+          'titleId': "tt" + imdb_id
+      }
+    }
+    headers = {
+      "content-type": "application/json",
+      "cookie": imdb_cookie
+    }
+
+    resp = requests.post("https://api.graphql.imdb.com/", json=req_body, headers=headers)
+  
+    soup = BeautifulSoup(resp.text, 'html.parser')
+
+    if resp.status_code != 200:
+      if resp.status_code == 429:
+        sleep(1)
+      else:
+        break
+
+    json_resp = resp.json()
+    
+    if 'errors' in json_resp and len(json_resp['errors']) > 0:
+      first_error_msg = json_resp['errors'][0]['message']
+
+      if 'Authentication' in first_error_msg:
+        print(f"Neplatna IMDb cookie")
+        exit(1)
+      else:
+        break
+    else:
+      suc += 1
+        
+  print(32 * "-")
+  print(f"Hodnoceno {suc} filmu") 
+  print(32 * "=")  
     
 def print_menu():
   print('User:', user_name.string.split(' |')[0], '\nID:   ', user_id)
   print(32 * "-")
   print('1. Stahnout hodnoceni jako .csv')
   print('2. Stahnout recenze jako .csv')
-  print('3. Exit')
+  print('3. Stahnout IMDb ID jako .csv (po spusteni #1)')
+  print('4. Ohodnotit na IMDb (po spusteni #3)')
+  print('5. Ohodnotit znovu (imdb_fail.csv)')
+  print('6. Exit')
   print(32 * '-')
   
 loop=True      
   
 while loop:
   print_menu()
-  choice = input("Vyber [1-3]: ")
+  choice = input("Vyber [1-6]: ")
    
   if choice == '1':     
     print('...... vytvarim soubor csfd_ratings.csv')
@@ -146,6 +297,15 @@ while loop:
     print('...... vytvarim soubor csfd_reviews.csv')
     get_csfd_reviews()
   elif choice == '3':
+    print('...... vytvarim soubor csfd_imdb_links.csv')
+    get_imdb_links()
+  elif choice == '4':
+    print('...... hodnotim na IMDb')
+    rate_imdb()
+  elif choice == '5':
+    print('...... hodnotim znovu na IMDb')
+    rate_fail_imdb()
+  elif choice == '6':
       print("Exiting... bye!")
       sys.exit()
   else:
