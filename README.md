@@ -74,7 +74,7 @@ Link to IMDb is visible after login on each individual movie profile page in the
 
 Uses csfd_imdb_links.csv as the source file, which was genereted in the task #3. I have mainly used https://github.com/TobiasPankner/Letterboxd-to-IMDb for this (I hereby thank the author!). In order for this function to work correctly, you need to have imdb_cookie, which authenticates the user. Guide with pictures is available on the previous link under "Getting the IMDb cookie". You then have to copy the whole string into the file imdb_cookie.txt. IMDb API is not the most reliable one so it's therefore possible that some ratings will fail. If that happens, you can find them in the file imdb_fail.csv.
 
-5, Rate movies on IMDb, which has failed in #4  
+5, Rate movies on IMDb, which have failed in #4  
 
 Uses imdb_fail.csv as the source file, which you can freely edit (if you don't want to run the entire database again as in point #4) and where you can find the error message stating why the movie wasn't possible to be rated.
 
