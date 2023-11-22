@@ -50,7 +50,7 @@ Odkaz na IMDb je viditelný po příhlášení na jednotlivých profilech filmů
 
 4, Ohodnotí filmy na IMDb  
 
-Jako zdrojový soubor se používá csfd_imdb_links.csv, který se vygeneroval v bodě #3. Zde jsem vycházel především z https://github.com/TobiasPankner/Letterboxd-to-IMDb (tímto děkuji jeho autorovi!). Aby tato funkce fungovala je třeba mít uloženou imdb_cookie, která uživatele autentifikuje. Obrázkový návod je dostupný na uvedeném odkazu v sekci "Getting the IMDb cookie". Celou cookie pak jen zkopírujte do souboru imdb_cookie.txt. IMDb API není zrovna nejspolehlivější, takže je možné, že Vám nějaké filmy neprojdou. Pokud se tak stane, najdete je v souboru imdb_fail.csv.
+Jako zdrojový soubor se používá csfd_imdb_links.csv, který se vygeneroval v bodě #3. Zde jsem vycházel především z https://github.com/TobiasPankner/Letterboxd-to-IMDb (tímto děkuji jeho autorovi!). Aby tato funkce fungovala je potřeba mít uloženou imdb_cookie, která uživatele autentifikuje. Obrázkový návod je dostupný na uvedeném odkazu v sekci "Getting the IMDb cookie". Celou cookie pak jen zkopírujte do souboru imdb_cookie.txt. IMDb API není zrovna nejspolehlivější, takže je možné, že Vám nějaké filmy neprojdou. Pokud se tak stane, najdete je v souboru imdb_fail.csv.
 
 5, Ohodnotí filmy na IMDb, které neprošly v bodě #4  
 
