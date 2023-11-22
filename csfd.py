@@ -141,14 +141,17 @@ def get_imdb_links():
     urls = (f'https://www.csfd.cz/film/{csfd_link}')
     grab = requests.get(urls, headers=payload)
     soup = BeautifulSoup(grab.text, 'html.parser')
+
+    try:
+      csfd_rating = soup.select_one('a[href="#close-dropdown"]')['data-rating']
+      imdb_link = soup.select_one('a.button.button-big.button-imdb')['href']
+    except Exception:
+      imdb_link = None
     
-    csfd_rating = soup.select_one('a[href="#close-dropdown"]')['data-rating']
-    imdb_link = soup.select_one('a.button.button-big.button-imdb')['href']
-    
-    if csfd_rating and imdb_link:
+    if imdb_link is not None:
       f.write(csfd.split(';')[0] + "," + imdb_link.split('/title/tt')[1].split('/')[0] + "," + csfd_rating + "\n")
     else:
-      fl.write(csfd.split(';')[0] + "," + na + "," + csfd_rating + "\n")
+      fl.write(csfd.split(';')[0] + "," + "none" + "," + csfd_rating + "\n")
       
   f.close()
   fl.close()
