@@ -2,7 +2,7 @@
 Skripty na CSFD.cz (Česko-slovenskou filmovou databázi) / Scripts related to CSFD.cz (Czech-Slovak movie database)
 
 Otestováno / Tested:
-  - CSFD ke dni 22-listopadu-2023 / CSFD on 22-November-2023
+  - CSFD ke dni 19-února-2024 / CSFD on 19-February-2024
   - Python 3.6, 3.11
   - Windows 10, Red Hat 6  
 
@@ -58,6 +58,10 @@ Jako zdrojový soubor se používá csfd_imdb_links.csv, který se vygeneroval v
 
 Jako zdrojový soubor se používá imdb_fail.csv, který můžete libovolně upravovat (pokud nechcete znovu pouštět celé hodnocení v bodě #4) a najdete v něm i chybovou hlášku, kvůli které nešel film ohodnotit na IMDb.
 
+9, Zkontroluje platnost CSFD cookie  
+
+Kontrola, zda uživatel správně zkopíroval csfd_cookie potřebnou v bodě #3
+
 ### EN  
 1, Download ratings in .csv:  
 csfd_id; name of the movie; year it was made; date when rated; rating itself  
@@ -81,6 +85,10 @@ Uses csfd_imdb_links.csv as the source file, which was genereted in the task #3.
 5, Rate movies on IMDb, which have failed in #4  
 
 Uses imdb_fail.csv as the source file, which you can freely edit (if you don't want to run the entire database again as in point #4) and where you can find the error message stating why the movie wasn't possible to be rated.
+
+9, Checks validity of the CSFD cookie  
+
+Checks if the user has copied the csfd_cookie value properly which is needed to run #3
 
 
 ## Note  
