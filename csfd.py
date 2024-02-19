@@ -275,7 +275,23 @@ def rate_fail_imdb():
   print(32 * "-")
   print(f"Hodnoceno {suc} filmu") 
   print(32 * "=")  
-    
+
+def csfd_cookie_validity():
+  csfd_nastaveni = (f'https://www.csfd.cz/soukrome/nastaveni/')
+  grab = requests.get(csfd_nastaveni, headers=payload)
+  soup = BeautifulSoup(grab.text, 'html.parser')
+  
+  nastaveni = 'Nastavení - Účet'
+  nastavenie = 'Nastavenie - Účet'
+  meta_contents = [meta_tag.get('content', '') for meta_tag in soup.find_all('meta')]
+  
+  if any(nastaveni in content or nastavenie in content for content in meta_contents):
+    print('CSFD cookie je v poradku.')
+  else:
+    print('CSFD cookie je neplatna!')
+  
+  print(32 * "=")
+
 def print_menu():
   print('User:', user_name.string.split(' |')[0], '\nID:   ', user_id)
   print(32 * "-")
@@ -284,7 +300,8 @@ def print_menu():
   print('3. Stahnout IMDb ID jako .csv (po spusteni #1)')
   print('4. Ohodnotit na IMDb (po spusteni #3)')
   print('5. Ohodnotit znovu (imdb_fail.csv)')
-  print('6. Exit')
+  print('9. Kontrola CSFD cookie')
+  print('0. Exit')
   print(32 * '-')
   
 loop=True      
@@ -308,7 +325,10 @@ while loop:
   elif choice == '5':
     print('...... hodnotim znovu na IMDb')
     rate_fail_imdb()
-  elif choice == '6':
+  elif choice == '9':
+    print('...... kontroluji')
+    csfd_cookie_validity()
+  elif choice == '0':
       print("Exiting... bye!")
       sys.exit()
   else:
