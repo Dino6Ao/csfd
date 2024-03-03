@@ -48,8 +48,6 @@ csfd_id, imdb_id, hodnocení
 
 Odkaz na IMDb je viditelný po příhlášení na jednotlivých profilech filmů v pravém menu (= proto je nutné mít správnou csfd_cookie, viz předchozí bod. Bez csfd_cookie nebude tato část skriptu fungovat!). Ne každý film tuto informaci ovšem má, v tom případě ji můžete později do vygenerovaného .csv souboru doplnit ručně.
 
-Pokud vám tato část spadne hned u prvního filmu s hláškou "UnboundLocalError: cannot access local variable 'csfd_rating' where it is not associated with a value", znamená to, že nemáte správnou csfd_cookie. Můžete to ověřit např. tím, že změníte názvy filmů do jiného jazyka (popsáno v bodě #2) a pokud se stále budou stahovat česky, csfd_cookie je špatně.
-
 4, Ohodnotí filmy na IMDb  
 
 Jako zdrojový soubor se používá csfd_imdb_links.csv, který se vygeneroval v bodě #3. Zde jsem vycházel především z https://github.com/TobiasPankner/Letterboxd-to-IMDb (tímto děkuji jeho autorovi!). Aby tato funkce fungovala je potřeba mít uloženou imdb_cookie, která uživatele autentifikuje. Obrázkový návod je dostupný na uvedeném odkazu v sekci "Getting the IMDb cookie". Celou cookie pak jen zkopírujte do souboru imdb_cookie.txt. IMDb API není zrovna nejspolehlivější, takže je možné, že Vám nějaké filmy neprojdou. Pokud se tak stane, najdete je v souboru imdb_fail.csv.
@@ -75,8 +73,6 @@ By default, CSFD shows the movie titles in Czech. If you want to export the data
 csfd_id, imdb_id, rating itself
 
 Link to IMDb is visible after login on each individual movie profile page in the right menu (= it is therefore important to have the correct csfd_cookie, see the previous point. Without csfd_cookie this part of the script won't work!) Not all the movies have this information though, in that case you can fill it out manually into the generated .csv file
-
-If this part of the script fails with the line "UnboundLocalError: cannot access local variable 'csfd_rating' where it is not associated with a value", it means you have an incorrect csfd_cookie. You can verify that by changing the names of the movies to a different language (as described in task #2) and if they are still downloading in czech, csfd_cookie is wrong.
 
 4, Rate movies on IMDb  
 
