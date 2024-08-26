@@ -90,9 +90,3 @@ Checks if the user has copied the csfd_cookie value properly which is needed to 
 ## Note  
 V případě zájmu je možno rozšířit a přidat další funkce / In case of interest, further options can be added.  
 Pokud najdete nějakou chybu či nesrovnalost, budu rád, když mě na ni upozorníte / If you find some error or inconsistency, please do let me know about it.
-
-------
-
-I have a day job, so this is really optional. If you think that any benefit you obtained here is worth some money and you are willing to pay for it, feel free to send any amount through PayPal
-
-[![](https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif)](https://www.paypal.com/donate/?hosted_button_id=QQCS64WL9MJV6)
