@@ -18,10 +18,32 @@ if os.path.exists('imdb_cookie.txt'):
 else:
   imdb_cookie = ''
 
-payload = {'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5)\
-            AppleWebKit/537.36 (KHTML, like Gecko) Cafari/537.36',
-            'cookie': csfd_cookie,
-          }
+payload = {
+    "User-Agent": (
+        "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
+        "AppleWebKit/537.36 (KHTML, like Gecko) "
+        "Chrome/136.0.0.0 Safari/537.36"
+    ),
+    "Accept": (
+        "text/html,application/xhtml+xml,"
+        "application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8"
+    ),
+    "Accept-Language": "cs-CZ,cs;q=0.9,en-US;q=0.8,en;q=0.7",
+    "Accept-Encoding": "gzip, deflate, br",
+    "Connection": "keep-alive",
+    "Cache-Control": "max-age=0",
+    "Upgrade-Insecure-Requests": "1",
+    "Referer": "https://www.csfd.cz/",
+    "DNT": "1",
+    "Sec-CH-UA": '"Google Chrome";v="136", "Chromium";v="136", "Not.A/Brand";v="24"',
+    "Sec-CH-UA-Mobile": "?0",
+    "Sec-CH-UA-Platform": '"Windows"',
+    "Sec-Fetch-Dest": "document",
+    "Sec-Fetch-Mode": "navigate",
+    "Sec-Fetch-Site": "same-origin",
+    "Sec-Fetch-User": "?1",
+    "Cookie": csfd_cookie,
+}
         
 user_id = (sys.argv[1])
 user_url = (f'https://www.csfd.cz/uzivatel/{user_id}')
@@ -36,7 +58,7 @@ def get_csfd_ratings():
   grab = requests.get(rating_url, headers=payload)
   soup = BeautifulSoup(grab.text, 'html.parser')
   
-  pages = soup.find('header', {'class':'box-header'}).find('h2').text.split('(')[1].split(')')[0].replace(' ', '').replace('&nbsp;', '').replace(nbsp, '')
+  pages = soup.find('header', {'class':'updated-box-header'}).find('h2').text.split('(')[1].split(')')[0].replace(' ', '').replace('&nbsp;', '').replace(nbsp, '')
   number = int(pages) / 50
   p = math.ceil(number)
   
@@ -83,7 +105,7 @@ def get_csfd_reviews():
   grab = requests.get(review_url, headers=payload)
   soup = BeautifulSoup(grab.text, 'html.parser')
   
-  pages = soup.find('header', {'class':'box-header'}).find('h2').text.split('(')[1].split(')')[0].replace(' ', '').replace('&nbsp;', '').replace(nbsp, '')
+  pages = soup.find('header', {'class':'updated-box-header'}).find('h2').text.split('(')[1].split(')')[0].replace(' ', '').replace('&nbsp;', '').replace(nbsp, '')
   number = int(pages) / 10
   p = math.ceil(number)
   
@@ -100,7 +122,7 @@ def get_csfd_reviews():
         name = reviews.find('a', {'class':'film-title-name'}).text
         year = reviews.find('span', {'class':'info'}).text
         date = reviews.find('time').text
-        review = reviews.find('div', {'class':'user-reviews-text'}).text
+        review = reviews.find('div', {'class':'article-content-spacing'}).text
         try:
           stars = str(reviews.find('span', {'class':'star-rating'}))
           stars_help = stars.split('span class=\"stars ')[1].split('\">')[0]
@@ -144,7 +166,7 @@ def get_imdb_links():
 
     try:
       csfd_rating = soup.select_one('a[href="#close-dropdown"]')['data-rating']
-      imdb_link = soup.select_one('a.button.button-big.button-imdb')['href']
+      imdb_link = soup.select_one('a.button.button-imdb')['href']
     except Exception:
       imdb_link = None
     
