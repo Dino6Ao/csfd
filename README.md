@@ -6,6 +6,8 @@ Otestováno / Tested:
   - Python 3.6, 3.11
   - Windows 10, Red Hat 6  
 
+### !! DOWNLOAD THE LATEST .PY FILE, NOT THE RELEASE .ZIP !!
+
 ## Co skript dělá / Purpose
 ### CZ  
 Stáhne hodnocení/recenze uživatele z webu csfd.cz do formátu .csv, se kterým pak můžete dále pracovat např. v Excelu a importovat výsledek do dalších databází (IMDb, Letterboxd, Trakt...)  
