@@ -1,11 +1,6 @@
 # CSFD.cz
 Skripty na CSFD.cz (Česko-slovenskou filmovou databázi) / Scripts related to CSFD.cz (Czech-Slovak movie database)
 
-Otestováno / Tested:
-  - CSFD ke dni 19-února-2024 / CSFD on 19-February-2024
-  - Python 3.6, 3.11
-  - Windows 10, Red Hat 6  
-
 ## Co skript dělá / Purpose
 ### CZ  
 Stáhne hodnocení/recenze uživatele z webu csfd.cz do formátu .csv, se kterým pak můžete dále pracovat např. v Excelu a importovat výsledek do dalších databází (IMDb, Letterboxd, Trakt...)  
